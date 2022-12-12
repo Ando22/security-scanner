@@ -1,0 +1,34 @@
+# coverage
+coverage
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+coverage.html
+dump.rdb
+t.js
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# local env files
+.env
+
+# volumes
+docker/.volumes
+
+# debug
+logs
+pids
+results
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# DS
+.DS_Store
