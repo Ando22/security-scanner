@@ -1,14 +1,14 @@
 import sequelize from "database/sequelize";
 import { DataTypes, Model } from "sequelize";
-import Findings from "./Findings";
 
 export interface ResultsModel {
-    id: number
+    id: number | null | undefined;
     repository: string
     status: string
     queue_at: string
-    scanning_at: string
-    finished_at: string
+    scanning_at: string | null | undefined;
+    finished_at: string | null | undefined;
+    findings: any
 }
 
 const Results = sequelize.define<Model<ResultsModel>>("results", {
@@ -34,12 +34,14 @@ const Results = sequelize.define<Model<ResultsModel>>("results", {
     },
     scanning_at: {
         type: 'TIMESTAMP',
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         allowNull: true,
     },
     finished_at: {
         type: 'TIMESTAMP',
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: true,
+    },
+    findings: {
+        type: DataTypes.JSONB,
         allowNull: true,
     },
 }, {
@@ -53,9 +55,5 @@ const Results = sequelize.define<Model<ResultsModel>>("results", {
         },
     ]
 });
-
-Results.hasMany(Findings, {
-    onDelete: 'CASCADE'
-})
 
 export default Results;

@@ -8,7 +8,7 @@ export function ResultHandler(app: Koa) {
 
     resultGroup.post("/", async ctx => {
         try {
-            const { body }: any = ctx
+            const { body }: any = ctx.request
             const response = await handleCreateResult(ctx, body)
             ctx.body = {
                 data: response,
@@ -25,12 +25,12 @@ export function ResultHandler(app: Koa) {
 
     resultGroup.put("/:id", async ctx => {
         try {
-            const { body }: any = ctx
+            const { body }: any = ctx.request
             const id = parseInt(ctx.params.id);
             const response = await handleUpdateResult(ctx, id, body)
             ctx.body = {
                 data: response,
-                message: 'success create result'
+                message: 'success update result'
             }
         } catch (error: any) {
             ctx.body = {
@@ -43,7 +43,7 @@ export function ResultHandler(app: Koa) {
 
     resultGroup.get("/", async ctx => {
         try {
-            const response = await handleGetListResult(ctx, {repository: "", status: ""})
+            const response = await handleGetListResult(ctx)
             ctx.body = {
                 data: response,
                 message: 'success get all result'

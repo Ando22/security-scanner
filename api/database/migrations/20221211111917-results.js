@@ -27,19 +27,20 @@ module.exports = {
                     defaultValue: 'QUEUED',
                     allowNull: false,
                 },
+                findings: {
+                    type: Sequelize.DataTypes.JSONB,
+                    allowNull: true,
+                },
                 queue_at: {
                     type: 'TIMESTAMP',
-                    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
                     allowNull: true,
                 },
                 scanning_at: {
                     type: 'TIMESTAMP',
-                    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
                     allowNull: true,
                 },
                 finished_at: {
                     type: 'TIMESTAMP',
-                    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
                     allowNull: true,
                 },
                 created_at: {
