@@ -21,12 +21,10 @@ npm install
 `dotenv` is used to manage environment variables. You will need to create a `.env` file in the root directory of the project. The following variables are required:
 
 ```bash
-# The port that the server will run on
-PORT=3000
 # The database host
-DB_HOST="localhost"
+DB_HOST=
 # The database port
-DB_PORT=6432
+DB_PORT=
 # The database name
 DB_NAME=
 # The database user
@@ -41,31 +39,42 @@ or simply copy the `.env.example` file and rename it to `.env`.
 cp .env.example .env
 ```
 
-### Running the project
+### Directory Structure
 
-To run the project, use the following command:
+this project having Layered Architecture. The three independent layers are delivery, use-case and datastore. (https://medium.com/swlh/developing-a-web-application-in-go-using-the-layered-architecture-8fc13209c808)
+
+- `./domain/repository` storing the data to database
+- `./domain/service` layer does the business logic that is required for the application
+- `./handler` this layer role is to handle recieve request and write response
+
+
+### Run Database Migration
+
+make sure your postgres application is running. use the following command to run the migration:
 
 ```bash
-npm start
+npm run db:migrtate
 ```
 
-## Contributing
 
-### Code Style
+### Running the project
 
-We enforces functional programming, so we avoid using classes and `this` keyword.
+make sure your postgres application is running. use the following command to run the project:
 
-```ts
-// bad
-class Foo {
-  bar() {
-    return this.baz;
-  }
-  baz: string;
-}
+```bash
+npm run start
+```
 
-// good
-const foo = (baz: string) => ({
-  bar: () => baz,
-});
+### Running with Docker
+
+make sure your postgres application is running. use the following command to run the project:
+
+build the image first:
+```bash
+  docker build -t api .
+```
+
+after it success, you can run this command to run the api
+```bash
+docker run -p 8080:8080 api
 ```
