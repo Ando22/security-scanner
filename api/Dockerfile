@@ -15,6 +15,9 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+# Run migrations
+RUN npx sequelize-cli db:migrate
+
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
 WORKDIR /app/api
