@@ -32,8 +32,8 @@ export default function Detail() {
                 <meta name="description" content="Full stack Engineer Challlange" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
-                <div className="flex justify-start items-center gap-4">
+            <main className={styles.main} data-testid="main">
+                <div className="flex justify-start items-center gap-4" >
                     <Button icon onClick={() => router.back()}>
                         <Icon name='angle left' />
                     </Button>
@@ -41,7 +41,7 @@ export default function Detail() {
                         Security Scanner Detail
                     </h1>
                 </div>
-                <section className="py-12">
+                <section className="py-12" data-testid="findings">
                     <Grid className="w-full">
                         <Grid.Row>
                             <Grid.Column width={4}>

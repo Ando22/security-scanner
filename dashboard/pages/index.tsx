@@ -34,24 +34,24 @@ export default function Home() {
         onClose={() => setOpenModal(false)}
         onSubmit={submitScanResult}
       />
-      <main className={styles.main}>
+      <main className={styles.main} data-testid="main">
         <Grid>
           <Grid.Row>
-            <Grid.Column floated='left' width={6}>
-              <h1 className={styles.title}>
+            <Grid.Column floated="left" width={6}>
+              <h1 className={styles.title} data-testid="title">
                 Security Scanner
               </h1>
             </Grid.Column>
-            <Grid.Column floated='right' width={3}>
-              <div className='flex justify-center items-center h-full'>
-                <Button onClick={() => setOpenModal(true)} content="Primary">
+            <Grid.Column floated="right" width={3}>
+              <div className="flex justify-center items-center h-full">
+                <Button onClick={() => setOpenModal(true)}>
                   Scan a Repository
                 </Button>
               </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <div className="mt-16">
+        <div className="mt-16" data-testid="table">
           <TableComponent
             revalidate={mutate}
             head={["Repository Name", "Scan Status", "Findings", "Timestamp"]}

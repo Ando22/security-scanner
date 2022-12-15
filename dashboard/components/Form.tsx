@@ -32,8 +32,6 @@ export const FormComponent = ({
     ]
 
     const [repository, setRepository] = useState('')
-
-    console.log(repository)
     return (
         <Modal
             size="large"
