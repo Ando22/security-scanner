@@ -24,7 +24,7 @@ const handleCreateResult = async (ctx: Koa.Context, payload: ResultsModel) => {
         const result = await createResult(data)
         return result
     } catch (error) {
-        console.error('Error:Service:Repository create result')
+        console.error('Error:Service:Repository create result', error)
         ctx.throw(500, 'Error:Service:Repository create result')
     }
 };
@@ -40,8 +40,8 @@ const handleUpdateResult = async (ctx: Koa.Context, id: number, payload: Results
         const result = await updateResultById(id, data)
         return result
     } catch (error) {
-        console.error('Error:Service:Repository create result')
-        ctx.throw(500, 'Error:Service:Repository create result')
+        console.error('Error:Service:Repository update result')
+        ctx.throw(500, 'Error:Service:Repository update result')
     }
 };
 
@@ -50,8 +50,9 @@ const handleGetResult = async (ctx: Koa.Context, id: number) => {
         const result = await getResultById(id)
         return result
     } catch (error) {
-        console.error('Error:Service:Repository create result')
-        ctx.throw(500, 'Error:Service:Repository create result')
+        console.log(error)
+        console.error('Error:Service:Repository get result')
+        ctx.throw(500, 'Error:Service:Repository get result')
     }
 };
 
@@ -70,8 +71,8 @@ const handleDeleteResult = async (ctx: Koa.Context, id: number) => {
         const result = await deleteResultById(id)
         return result
     } catch (error) {
-        console.error('Error:Service:Repository create result')
-        ctx.throw(500, 'Error:Service:Repository create result')
+        console.error('Error:Service:Repository delete result')
+        ctx.throw(500, 'Error:Service:Repository delete result')
     }
 };
 

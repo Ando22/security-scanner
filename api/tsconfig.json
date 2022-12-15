@@ -2,9 +2,13 @@
   "ts-node": {
     "require": [
       "tsconfig-paths/register"
-    ]
+    ],
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "compilerOptions": {
+    "module": "ESNext",
     "lib": [
       "ES5",
       "ES6"
@@ -24,7 +28,7 @@
   },
   "include": [
     "./**/*.ts"
-  ],
+, "main.ts"  ],
   "exclude": [
     "node_modules"
   ]

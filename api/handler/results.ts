@@ -11,6 +11,7 @@ export function ResultHandler(app: Koa) {
             const { body }: any = ctx.request
             const response = await handleCreateResult(ctx, body)
             ctx.body = {
+                status: 200,
                 data: response,
                 message: 'success create result'
             }
@@ -29,6 +30,7 @@ export function ResultHandler(app: Koa) {
             const id = parseInt(ctx.params.id);
             const response = await handleUpdateResult(ctx, id, body)
             ctx.body = {
+                status: 200,
                 data: response,
                 message: 'success update result'
             }
@@ -45,10 +47,12 @@ export function ResultHandler(app: Koa) {
         try {
             const response = await handleGetListResult(ctx)
             ctx.body = {
+                status: 200,
                 data: response,
                 message: 'success get all result'
             }
         } catch (error: any) {
+            console.log(error)
             ctx.body = {
                 status: ctx.status || 500,
                 data: {},
@@ -62,6 +66,7 @@ export function ResultHandler(app: Koa) {
         try {
             const response = await handleGetResult(ctx, id)
             ctx.body = {
+                status: 200,
                 data: response,
                 message: 'success get all result'
             }
@@ -79,6 +84,7 @@ export function ResultHandler(app: Koa) {
             const id = parseInt(ctx.params.id);
             const response = await handleDeleteResult(ctx, id)
             ctx.body = {
+                status: 200,
                 data: response,
                 message: 'success get all result'
             }

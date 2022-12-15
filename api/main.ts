@@ -15,7 +15,7 @@ const app = new Koa();
 const PORT = process.env.PORT || 8080;
 
 function HealthCheckHandler(app: Koa) {
-  const healthCheckGroup = new Router({ prefix: "/api/healthcheck" });
+  const healthCheckGroup = new Router({ prefix: "/api/health-check" });
 
   healthCheckGroup.get("/", (ctx) => {
     ctx.body = "OK";
@@ -27,19 +27,21 @@ function HealthCheckHandler(app: Koa) {
   return healthCheckGroup;
 }
 
-async function main() {
-  await initSequelize();
-  app.use(bodyParser());
-  app.use(logger());
-  app.use(cors());
 
-  // Register handlers
-  HealthCheckHandler(app);
-  ResultHandler(app);
+initSequelize();
+app.use(bodyParser());
+app.use(logger());
+app.use(cors());
 
-  app.listen(PORT).on("listening", () => {
-    console.log(`Server listening on port ${8080}`);
-  });
-}
+// Register handlers
+HealthCheckHandler(app);
+ResultHandler(app);
 
-main();
+app.listen(PORT).on("listening", () => {
+  console.log(`Server listening on port ${8080}`);
+});
+
+export default app;
+
+
+

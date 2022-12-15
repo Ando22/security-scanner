@@ -10,6 +10,7 @@ const createResult = async (payload: ResultsModel) => {
         })
         return result
     } catch (error) {
+        console.log(error)
         throw error
     }
 }
@@ -48,15 +49,15 @@ const getAllResult = async () => {
             ]
         })
         return results.map((res: any) => {
-            const findings = JSON.parse(res.findings)
+            const findings = JSON.parse(res?.findings)
             return {
-                id: res.id,
-                repository: res.repository,
-                status: res.status,
+                id: res?.id,
+                repository: res?.repository,
+                status: res?.status,
                 total_findings: findings.length,
-                queue_at: res.queue_at,
-                scanning_at: res.scanning_at,
-                finished_at: res.finished_at,
+                queue_at: res?.queue_at,
+                scanning_at: res?.scanning_at,
+                finished_at: res?.finished_at,
 
             }
         })
@@ -69,14 +70,15 @@ const getAllResult = async () => {
 const getResultById = async (id: number) => {
     try {
         const result: any = await Results.findByPk(id);
+        const findings = JSON.parse(result?.findings || "{}")
         return {
-            id: result.id,
-            repository: result.repository,
-            status: result.status,
-            findings: JSON.parse(result.findings),
-            queue_at: result.queue_at,
-            scanning_at: result.scanning_at,
-            finished_at: result.finished_at,
+            id: result?.id,
+            repository: result?.repository,
+            status: result?.status,
+            findings: findings,
+            queue_at: result?.queue_at,
+            scanning_at: result?.scanning_at,
+            finished_at: result?.finished_at,
         };
     } catch (error) {
         throw error;
