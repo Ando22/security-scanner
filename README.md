@@ -1,4 +1,4 @@
-# GuardRails - Full Stack Engineer Challenge - Security Scanne
+# Security Scanner
 
 Security Scanner Fullstack Engineer Challenge. this project is to scan a list repository vulnarable code. user can pick a list of repositories and see the result of the scan process.
 
